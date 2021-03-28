@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,28 +15,359 @@
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="HistoryRental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdProperty" Type="int" Nullable="false" />
+          <Property Name="DataStart" Type="date" Nullable="false" />
+          <Property Name="DateEnt" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Homes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AmountPeople" Type="int" Nullable="false" />
+          <Property Name="Square" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Technic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfHome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfTechnic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_HistoryRental_ToClient">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="HistoryRental" Type="Self.HistoryRental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryRental">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryRental_ToProperty">
+          <End Role="Property" Type="Self.Property" Multiplicity="1" />
+          <End Role="HistoryRental" Type="Self.HistoryRental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryRental">
+              <PropertyRef Name="IdProperty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Homes_ToProperty">
+          <End Role="Property" Type="Self.Property" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Homes" Type="Self.Homes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Homes">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Homes_ToTypeOfHome">
+          <End Role="TypeOfHome" Type="Self.TypeOfHome" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Homes" Type="Self.Homes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfHome">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Homes">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technic_ToProperty">
+          <End Role="Property" Type="Self.Property" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Technic" Type="Self.Technic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Technic">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technic_ToTypeOfTech">
+          <End Role="TypeOfTechnic" Type="Self.TypeOfTechnic" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Technic" Type="Self.Technic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfTechnic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Technic">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище DatabaseModelContainer">
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoryRental" EntityType="Self.HistoryRental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Homes" EntityType="Self.Homes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Technic" EntityType="Self.Technic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfHome" EntityType="Self.TypeOfHome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfTechnic" EntityType="Self.TypeOfTechnic" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HistoryRental_ToClient" Association="Self.FK_HistoryRental_ToClient">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="HistoryRental" EntitySet="HistoryRental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryRental_ToProperty" Association="Self.FK_HistoryRental_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="HistoryRental" EntitySet="HistoryRental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Homes_ToProperty" Association="Self.FK_Homes_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Homes" EntitySet="Homes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Homes_ToTypeOfHome" Association="Self.FK_Homes_ToTypeOfHome">
+            <End Role="TypeOfHome" EntitySet="TypeOfHome" />
+            <End Role="Homes" EntitySet="Homes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technic_ToProperty" Association="Self.FK_Technic_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Technic" EntitySet="Technic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technic_ToTypeOfTech" Association="Self.FK_Technic_ToTypeOfTech">
+            <End Role="TypeOfTechnic" EntitySet="TypeOfTechnic" />
+            <End Role="Technic" EntitySet="Technic" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="DatabaseModel.Clients" />
+          <EntitySet Name="Homes" EntityType="DatabaseModel.Homes" />
+          <EntitySet Name="Property" EntityType="DatabaseModel.Property" />
+          <EntitySet Name="TypeOfHome" EntityType="DatabaseModel.TypeOfHome" />
+          <EntitySet Name="TypeOfTechnic" EntityType="DatabaseModel.TypeOfTechnic" />
+          <AssociationSet Name="FK_Homes_ToProperty" Association="DatabaseModel.FK_Homes_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Homes" EntitySet="Homes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Homes_ToTypeOfHome" Association="DatabaseModel.FK_Homes_ToTypeOfHome">
+            <End Role="TypeOfHome" EntitySet="TypeOfHome" />
+            <End Role="Homes" EntitySet="Homes" />
+          </AssociationSet>
+          <EntitySet Name="Technic" EntityType="DatabaseModel.Technic" />
+          <AssociationSet Name="FK_Technic_ToProperty" Association="DatabaseModel.FK_Technic_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Technic" EntitySet="Technic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technic_ToTypeOfTech" Association="DatabaseModel.FK_Technic_ToTypeOfTech">
+            <End Role="TypeOfTechnic" EntitySet="TypeOfTechnic" />
+            <End Role="Technic" EntitySet="Technic" />
+          </AssociationSet>
+          <EntitySet Name="HistoryRental" EntityType="DatabaseModel.HistoryRental" />
+          <AssociationSet Name="FK_HistoryRental_ToClient" Association="DatabaseModel.FK_HistoryRental_ToClient">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="HistoryRental" EntitySet="HistoryRental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryRental_ToProperty" Association="DatabaseModel.FK_HistoryRental_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="HistoryRental" EntitySet="HistoryRental" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HistoryRental" Relationship="DatabaseModel.FK_HistoryRental_ToClient" FromRole="Clients" ToRole="HistoryRental" />
         </EntityType>
-        <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clients" EntityType="Self.Clients" />
-        </EntityContainer>
-      </Schema>
+        <EntityType Name="Homes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AmountPeople" Type="Int32" Nullable="false" />
+          <Property Name="Square" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Homes" ToRole="Property" />
+          <NavigationProperty Name="TypeOfHome" Relationship="DatabaseModel.FK_Homes_ToTypeOfHome" FromRole="Homes" ToRole="TypeOfHome" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Homes" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Property" ToRole="Homes" />
+          <NavigationProperty Name="Technic" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Property" ToRole="Technic" />
+          <NavigationProperty Name="HistoryRental" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="Property" ToRole="HistoryRental" />
+        </EntityType>
+        <EntityType Name="TypeOfHome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Homes" Relationship="DatabaseModel.FK_Homes_ToTypeOfHome" FromRole="TypeOfHome" ToRole="Homes" />
+        </EntityType>
+        <EntityType Name="TypeOfTechnic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Technic" Relationship="DatabaseModel.FK_Technic_ToTypeOfTech" FromRole="TypeOfTechnic" ToRole="Technic" />
+        </EntityType>
+        <Association Name="FK_Homes_ToProperty">
+          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.Homes" Role="Homes" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Homes">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Homes_ToTypeOfHome">
+          <End Type="DatabaseModel.TypeOfHome" Role="TypeOfHome" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.Homes" Role="Homes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfHome">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Homes">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Technic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Technic" ToRole="Property" />
+          <NavigationProperty Name="TypeOfTechnic" Relationship="DatabaseModel.FK_Technic_ToTypeOfTech" FromRole="Technic" ToRole="TypeOfTechnic" />
+        </EntityType>
+        <Association Name="FK_Technic_ToProperty">
+          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.Technic" Role="Technic" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Technic">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technic_ToTypeOfTech">
+          <End Type="DatabaseModel.TypeOfTechnic" Role="TypeOfTechnic" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.Technic" Role="Technic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfTechnic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Technic">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HistoryRental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdProperty" Type="Int32" Nullable="false" />
+          <Property Name="DataStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEnt" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Clients" Relationship="DatabaseModel.FK_HistoryRental_ToClient" FromRole="HistoryRental" ToRole="Clients" />
+          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="HistoryRental" ToRole="Property" />
+        </EntityType>
+        <Association Name="FK_HistoryRental_ToClient">
+          <End Type="DatabaseModel.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryRental">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryRental_ToProperty">
+          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1" />
+          <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryRental">
+              <PropertyRef Name="IdProperty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -45,11 +376,67 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="DatabaseModel.Clients">
               <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Homes">
+            <EntityTypeMapping TypeName="DatabaseModel.Homes">
+              <MappingFragment StoreEntitySet="Homes">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Square" ColumnName="Square" />
+                <ScalarProperty Name="AmountPeople" ColumnName="AmountPeople" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property">
+            <EntityTypeMapping TypeName="DatabaseModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfHome">
+            <EntityTypeMapping TypeName="DatabaseModel.TypeOfHome">
+              <MappingFragment StoreEntitySet="TypeOfHome">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfTechnic">
+            <EntityTypeMapping TypeName="DatabaseModel.TypeOfTechnic">
+              <MappingFragment StoreEntitySet="TypeOfTechnic">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Technic">
+            <EntityTypeMapping TypeName="DatabaseModel.Technic">
+              <MappingFragment StoreEntitySet="Technic">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryRental">
+            <EntityTypeMapping TypeName="DatabaseModel.HistoryRental">
+              <MappingFragment StoreEntitySet="HistoryRental">
+                <ScalarProperty Name="DateEnt" ColumnName="DateEnt" />
+                <ScalarProperty Name="DataStart" ColumnName="DataStart" />
+                <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

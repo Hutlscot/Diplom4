@@ -31,10 +31,10 @@
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
             <Button Style="{StaticResource DefaultButton}" 
                     Command="{Binding CommandGoTo}"
-                    CommandParameter="Клиенты" Content="История аренды"></Button>
+                    CommandParameter="История аренды" Content="История аренды"></Button>
             <Button Style="{StaticResource DefaultButton}" 
                     Command="{Binding CommandGoTo}"
-                    CommandParameter="Клиенты" Content="Всё имущество"></Button>
+                    CommandParameter="Всё имущество" Content="Всё имущество"></Button>
             <Button Style="{StaticResource DefaultButton}" 
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Техника" Content="Техника"></Button>

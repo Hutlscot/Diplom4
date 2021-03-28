@@ -1,4 +1,5 @@
 ﻿using Diplom.OtherClasses;
+using Diplom.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Diplom
         {
             InitializeComponent();
             Transfer.frame = frame;
+            frame.Navigate(new HistoryRentalPage());
         }
     }
 }

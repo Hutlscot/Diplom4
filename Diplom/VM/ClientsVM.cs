@@ -50,7 +50,7 @@ namespace Diplom.VM
                         }
                         catch (Exception e)
                         {
-                            MessageBox.Show($"Ошибка удаления {e}");
+                            MessageBox.Show($"not fount");
                         }
 
                     }));

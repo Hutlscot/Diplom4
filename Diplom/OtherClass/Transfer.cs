@@ -17,6 +17,16 @@ namespace Diplom.OtherClasses
         {
             switch (namePage)
             {
+                case "История аренды":
+                    {
+                        frame.Navigate(new HistoryRentalPage());
+                        break;
+                    }
+                case "Всё имущество":
+                    {
+                        frame.Navigate(new AllPropertyPage());
+                        break;
+                    }
                 case "Техника":
                     {
                         frame.Navigate(new TechnicPage());
