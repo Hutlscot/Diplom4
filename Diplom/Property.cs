@@ -25,9 +25,9 @@ namespace Diplom
         public string Price { get; set; }
         public string Description { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HistoryRental> HistoryRental { get; set; }
         public virtual Homes Homes { get; set; }
         public virtual Technic Technic { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoryRental> HistoryRental { get; set; }
     }
 }

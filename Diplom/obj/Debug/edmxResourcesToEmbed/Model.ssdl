@@ -17,8 +17,10 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdClient" Type="int" Nullable="false" />
     <Property Name="IdProperty" Type="int" Nullable="false" />
-    <Property Name="DataStart" Type="date" Nullable="false" />
-    <Property Name="DateEnt" Type="date" Nullable="false" />
+    <Property Name="DateStart" Type="date" Nullable="false" />
+    <Property Name="TimeStart" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DateEnd" Type="date" Nullable="false" />
+    <Property Name="TimeEnd" Type="time" Precision="7" Nullable="false" />
   </EntityType>
   <EntityType Name="Homes">
     <Key>

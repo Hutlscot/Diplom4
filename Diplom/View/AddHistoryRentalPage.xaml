@@ -1,0 +1,55 @@
+﻿<Page x:Class="Diplom.View.AddHistoryRentalPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom.VM"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавление записи в историю аренды" Style="{StaticResource Page}">
+
+    <Page.DataContext>
+        <local:AddHistoryRentalVM></local:AddHistoryRentalVM>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel Width="300" Margin="10" Orientation="Vertical">
+            <ComboBox materialDesign:HintAssist.Hint="Выбор клиента" ItemsSource="{Binding clients}"
+                      Margin="5" SelectedItem="{Binding selectedClient}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Info}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox materialDesign:HintAssist.Hint="Выбор имущества" ItemsSource="{Binding properties}"
+                      Margin="5" SelectedItem="{Binding selectedProperty}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Info}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <DatePicker Margin="5 5 5 0" Width="160" materialDesign:HintAssist.Hint="Дата начала аренды" SelectedDate="{Binding addedItem.DateStart}"></DatePicker>
+                <materialDesign:TimePicker
+                    Margin="5 0 0 5"
+                    SelectedTime="{Binding timeStart}"
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                    materialDesign:HintAssist.Hint="Время начала" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <DatePicker Margin="5 5 5 0" Width="160" materialDesign:HintAssist.Hint="Дата конца аренды" SelectedDate="{Binding addedItem.DateEnd}"></DatePicker>
+                <materialDesign:TimePicker
+                    Width="116"
+                    Margin="5 0 0 5"
+                    SelectedTime="{Binding timeEnd}"
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                    materialDesign:HintAssist.Hint="Время конца" />
+            </StackPanel>
+
+            <Button Width="150" Margin="5" Command="{Binding AddCommand}">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

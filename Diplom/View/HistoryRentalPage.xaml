@@ -1,4 +1,5 @@
 ﻿<Page x:Class="Diplom.View.HistoryRentalPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,7 +10,7 @@
       Title="История аренды" Style="{StaticResource Page}">
 
     <Page.DataContext>
-        <local:ClientsVM></local:ClientsVM>
+        <local:HistotyRentalVM></local:HistotyRentalVM>
     </Page.DataContext>
 
     <Grid>
@@ -17,22 +18,29 @@
             <RowDefinition Height="5*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <DataGrid Name="grid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding listItem}"
+        <DataGrid Name="data_grid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding listItem}"
                   SelectedItem="{Binding selectedItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Имущество" Binding="{Binding LastName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Клиент" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата начала" Binding="{Binding MiddleName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата конца" Binding="{Binding Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Clients.Info}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имущество" Binding="{Binding Property.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип имущества" Binding="{Binding Property.TypeProp}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Property.Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата начала" Binding="{Binding DateStartString}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата конца" Binding="{Binding DateEndString}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button HorizontalAlignment="Center"  Margin="5" Width="150"
+            <Button HorizontalAlignment="Left"  Margin="5" Width="150"
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавить запись" Content="Добавить запись"></Button>
-            <Button HorizontalAlignment="Right" Margin="5" Width="150"
+            <Button HorizontalAlignment="Center" Margin="5" Width="150"
                     Command="{Binding DelCommand}">Удалить запись</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" Margin="5">Поиск</TextBlock>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Введите название имущества" Width="220" TextChanged="TextBox_TextChanged"
+                     Text="{Binding addedItem.LastName}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

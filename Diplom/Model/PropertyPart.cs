@@ -19,5 +19,12 @@ namespace Diplom
                 return "Без типа";
             }
         }
+        public string Info
+        {
+            get
+            {
+                return $"{Name}, цена: {Price}";
+            }
+        }
     }
 }

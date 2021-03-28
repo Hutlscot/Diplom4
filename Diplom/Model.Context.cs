@@ -30,7 +30,7 @@ namespace Diplom
         public virtual DbSet<TypeOfHome> TypeOfHome { get; set; }
         public virtual DbSet<TypeOfTechnic> TypeOfTechnic { get; set; }
         public virtual DbSet<Technic> Technic { get; set; }
-        public virtual DbSet<HistoryRental> HistoryRental { get; set; }
         public virtual DbSet<Property> Property { get; set; }
+        public virtual DbSet<HistoryRental> HistoryRental { get; set; }
     }
 }

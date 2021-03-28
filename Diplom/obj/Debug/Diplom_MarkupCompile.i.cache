@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\123\Diplom\App.xaml
-9-966929386
+10-1652982201
 41432446814
-36-1686012329
+41-1332479730
 201748632865
-View\AddClientPage.xaml;View\AddHomePage.xaml;View\AddTechnicPage.xaml;View\PropertyPage.xaml;View\ClientsPage.xaml;View\HistoryRentalPage.xaml;View\HomesPage.xaml;View\MainWindow.xaml;View\TechnicPage.xaml;
+View\AddClientPage.xaml;View\AddHistoryRentalPage.xaml;View\AddHomePage.xaml;View\AddTechnicPage.xaml;View\PropertyPage.xaml;View\ClientsPage.xaml;View\HistoryRentalPage.xaml;View\HomesPage.xaml;View\MainWindow.xaml;View\TechnicPage.xaml;
 
-False
+True
 

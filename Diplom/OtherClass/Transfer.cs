@@ -57,6 +57,11 @@ namespace Diplom.OtherClass
                         frame.Navigate(new AddHomePage());
                         break;
                     }
+                case "Добавить запись":
+                    {
+                        frame.Navigate(new AddHistoryRentalPage());
+                        break;
+                    }
                 default:
                     {
                         MessageBox.Show("not fount");

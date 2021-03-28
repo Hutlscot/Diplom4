@@ -78,3 +78,5 @@ D:\123\Diplom\obj\Debug\View\AddHomePage.g.cs
 D:\123\Diplom\obj\Debug\View\AddHomePage.baml
 D:\123\Diplom\obj\Debug\View\PropertyPage.g.cs
 D:\123\Diplom\obj\Debug\View\PropertyPage.baml
+D:\123\Diplom\obj\Debug\View\AddHistoryRentalPage.g.cs
+D:\123\Diplom\obj\Debug\View\AddHistoryRentalPage.baml

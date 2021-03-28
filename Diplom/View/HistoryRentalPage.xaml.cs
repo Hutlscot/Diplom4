@@ -20,9 +20,17 @@ namespace Diplom.View
     /// </summary>
     public partial class HistoryRentalPage : Page
     {
+        ConnectionDB conn;
         public HistoryRentalPage()
         {
             InitializeComponent();
+            conn = new ConnectionDB();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var search = (sender as TextBox).Text;
+            data_grid.ItemsSource = conn.HistoryRental.Where(x => x.Property.Name.Contains(search)).ToList();
         }
     }
 }

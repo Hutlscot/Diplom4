@@ -22,8 +22,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
           <Property Name="IdProperty" Type="int" Nullable="false" />
-          <Property Name="DataStart" Type="date" Nullable="false" />
-          <Property Name="DateEnt" Type="date" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
+          <Property Name="TimeStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DateEnd" Type="date" Nullable="false" />
+          <Property Name="TimeEnd" Type="time" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Homes">
           <Key>
@@ -196,16 +198,7 @@
             <End Role="TypeOfTechnic" EntitySet="TypeOfTechnic" />
             <End Role="Technic" EntitySet="Technic" />
           </AssociationSet>
-          <EntitySet Name="HistoryRental" EntityType="DatabaseModel.HistoryRental" />
-          <AssociationSet Name="FK_HistoryRental_ToClient" Association="DatabaseModel.FK_HistoryRental_ToClient">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="HistoryRental" EntitySet="HistoryRental" />
-          </AssociationSet>
           <EntitySet Name="Property" EntityType="DatabaseModel.Property" />
-          <AssociationSet Name="FK_HistoryRental_ToProperty" Association="DatabaseModel.FK_HistoryRental_ToProperty">
-            <End Role="Property" EntitySet="Property" />
-            <End Role="HistoryRental" EntitySet="HistoryRental" />
-          </AssociationSet>
           <AssociationSet Name="FK_Homes_ToProperty" Association="DatabaseModel.FK_Homes_ToProperty">
             <End Role="Property" EntitySet="Property" />
             <End Role="Homes" EntitySet="Homes" />
@@ -213,6 +206,15 @@
           <AssociationSet Name="FK_Technic_ToProperty" Association="DatabaseModel.FK_Technic_ToProperty">
             <End Role="Property" EntitySet="Property" />
             <End Role="Technic" EntitySet="Technic" />
+          </AssociationSet>
+          <EntitySet Name="HistoryRental" EntityType="DatabaseModel.HistoryRental" />
+          <AssociationSet Name="FK_HistoryRental_ToClient" Association="DatabaseModel.FK_HistoryRental_ToClient">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="HistoryRental" EntitySet="HistoryRental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryRental_ToProperty" Association="DatabaseModel.FK_HistoryRental_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="HistoryRental" EntitySet="HistoryRental" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Clients">
@@ -291,30 +293,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="HistoryRental">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdClient" Type="Int32" Nullable="false" />
-          <Property Name="IdProperty" Type="Int32" Nullable="false" />
-          <Property Name="DataStart" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateEnt" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Clients" Relationship="DatabaseModel.FK_HistoryRental_ToClient" FromRole="HistoryRental" ToRole="Clients" />
-          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="HistoryRental" ToRole="Property" />
-        </EntityType>
-        <Association Name="FK_HistoryRental_ToClient">
-          <End Type="DatabaseModel.Clients" Role="Clients" Multiplicity="1" />
-          <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clients">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="HistoryRental">
-              <PropertyRef Name="IdClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Property">
           <Key>
             <PropertyRef Name="Id" />
@@ -323,22 +301,10 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HistoryRental" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="Property" ToRole="HistoryRental" />
           <NavigationProperty Name="Homes" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Property" ToRole="Homes" />
           <NavigationProperty Name="Technic" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Property" ToRole="Technic" />
+          <NavigationProperty Name="HistoryRental" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="Property" ToRole="HistoryRental" />
         </EntityType>
-        <Association Name="FK_HistoryRental_ToProperty">
-          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1" />
-          <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Property">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="HistoryRental">
-              <PropertyRef Name="IdProperty" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Homes_ToProperty">
           <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -364,6 +330,44 @@
             </Principal>
             <Dependent Role="Technic">
               <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HistoryRental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdProperty" Type="Int32" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeEnd" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Clients" Relationship="DatabaseModel.FK_HistoryRental_ToClient" FromRole="HistoryRental" ToRole="Clients" />
+          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="HistoryRental" ToRole="Property" />
+        </EntityType>
+        <Association Name="FK_HistoryRental_ToClient">
+          <End Type="DatabaseModel.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryRental">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryRental_ToProperty">
+          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1" />
+          <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryRental">
+              <PropertyRef Name="IdProperty" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -419,23 +423,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HistoryRental">
-            <EntityTypeMapping TypeName="DatabaseModel.HistoryRental">
-              <MappingFragment StoreEntitySet="HistoryRental">
-                <ScalarProperty Name="DateEnt" ColumnName="DateEnt" />
-                <ScalarProperty Name="DataStart" ColumnName="DataStart" />
-                <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
-                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Property">
             <EntityTypeMapping TypeName="DatabaseModel.Property">
               <MappingFragment StoreEntitySet="Property">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryRental">
+            <EntityTypeMapping TypeName="DatabaseModel.HistoryRental">
+              <MappingFragment StoreEntitySet="HistoryRental">
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

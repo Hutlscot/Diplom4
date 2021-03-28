@@ -17,8 +17,10 @@ namespace Diplom
         public int Id { get; set; }
         public int IdClient { get; set; }
         public int IdProperty { get; set; }
-        public System.DateTime DataStart { get; set; }
-        public System.DateTime DateEnt { get; set; }
+        public System.DateTime DateStart { get; set; }
+        public System.TimeSpan TimeStart { get; set; }
+        public System.DateTime DateEnd { get; set; }
+        public System.TimeSpan TimeEnd { get; set; }
     
         public virtual Clients Clients { get; set; }
         public virtual Property Property { get; set; }
