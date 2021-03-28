@@ -24,7 +24,7 @@ namespace Diplom.VM
                 return commandGoTo ?? (new RelayCommand(
                     title =>
                     {
-                        Transfer.GoTo(title.ToString());
+                        Trans.Go(title.ToString());
                     }));
             }
         }

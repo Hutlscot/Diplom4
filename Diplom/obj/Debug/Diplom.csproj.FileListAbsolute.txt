@@ -74,3 +74,5 @@ D:\123\Diplom\bin\Debug\MaterialDesignColors.pdb
 D:\123\Diplom\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\123\Diplom\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\123\Diplom\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\123\Diplom\obj\Debug\View\AddTechnicPage.g.cs
+D:\123\Diplom\obj\Debug\View\AddTechnicPage.baml

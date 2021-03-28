@@ -1,4 +1,5 @@
-﻿using Diplom.OtherClasses;
+﻿using Diplom.OtherClass;
+using Diplom.OtherClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Diplom.VM
                 return commandGoTo ?? (new RelayCommand(
                     title =>
                     {
-                        Transfer.GoTo(title.ToString());
+                        Trans.Go(title.ToString());
                     }));
             }
         }
@@ -45,12 +46,12 @@ namespace Diplom.VM
                             var conn = new ConnectionDB();
                             conn.Clients.Remove(conn.Clients.Find(selectedItem.Id));
                             conn.SaveChanges();
-                            Transfer.GoTo("Клиенты");
-                            MessageBox.Show("Успешно удалено");
+                            Info.Suc();
+                            Trans.Go("Клиенты");
                         }
                         catch (Exception e)
                         {
-                            MessageBox.Show($"Ошибка удаления\n{e}");
+                            Info.Err(e);
                         }
 
                     }));

@@ -1,4 +1,5 @@
-﻿using Diplom.OtherClasses;
+﻿using Diplom.OtherClass;
+using Diplom.OtherClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,12 @@ namespace Diplom.VM
                         conn.Clients.Add(addedItem);
                         conn.SaveChanges();
                         conn.SaveChanges();
-                        MessageBox.Show("Успешно сохранено");
-                        Transfer.GoTo("Клиенты");
+                        Info.Suc();
+                        Trans.Go("Клиенты");
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show($"Ошибка сохранения: {e}");
+                        Info.Err(e);
                     }
 
                 }));

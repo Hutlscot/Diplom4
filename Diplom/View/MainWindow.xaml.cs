@@ -25,7 +25,7 @@ namespace Diplom
         public MainWindow()
         {
             InitializeComponent();
-            Transfer.frame = frame;
+            Trans.frame = frame;
             frame.Navigate(new HistoryRentalPage());
         }
     }

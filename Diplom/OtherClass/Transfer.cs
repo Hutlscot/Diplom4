@@ -9,11 +9,11 @@ using System.Windows.Controls;
 
 namespace Diplom.OtherClasses
 {
-    public static class Transfer
+    public static class Trans
     {
         public static Frame frame;
 
-        public static void GoTo(string namePage)
+        public static void Go(string namePage)
         {
             switch (namePage)
             {
@@ -45,6 +45,11 @@ namespace Diplom.OtherClasses
                 case "Добавить клиента":
                     {
                         frame.Navigate(new AddClientPage());
+                        break;
+                    }
+                case "Добавить технику":
+                    {
+                        frame.Navigate(new AddTechnicPage());
                         break;
                     }
                 default:

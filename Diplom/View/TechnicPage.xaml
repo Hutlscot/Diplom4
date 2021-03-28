@@ -9,7 +9,7 @@
       Title="Техника" Style="{StaticResource Page}">
 
     <Page.DataContext>
-        <local:ClientsVM></local:ClientsVM>
+        <local:TechnicVM></local:TechnicVM>
     </Page.DataContext>
 
     <Grid>
@@ -21,15 +21,15 @@
                   SelectedItem="{Binding selectedItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Название" Binding="{Binding LastName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Стоимость" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Модель" Binding="{Binding MiddleName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Тип техники" Binding="{Binding Phone}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding Property.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость/час" Binding="{Binding Property.Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Model}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип техники" Binding="{Binding TypeOfTechnic.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Property.Description}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button HorizontalAlignment="Center" Margin="5" Width="150"
+            <Button HorizontalAlignment="Center" Margin="5"
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавить технику" Content="Добавить технику"></Button>
             <Button HorizontalAlignment="Right" Margin="5" Width="150"
