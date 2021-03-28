@@ -4,11 +4,67 @@
     <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="DatabaseModel.Clients">
         <MappingFragment StoreEntitySet="Clients">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Homes">
+      <EntityTypeMapping TypeName="DatabaseModel.Homes">
+        <MappingFragment StoreEntitySet="Homes">
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="Square" ColumnName="Square" />
+          <ScalarProperty Name="AmountPeople" ColumnName="AmountPeople" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property">
+      <EntityTypeMapping TypeName="DatabaseModel.Property">
+        <MappingFragment StoreEntitySet="Property">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfHome">
+      <EntityTypeMapping TypeName="DatabaseModel.TypeOfHome">
+        <MappingFragment StoreEntitySet="TypeOfHome">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfTechnic">
+      <EntityTypeMapping TypeName="DatabaseModel.TypeOfTechnic">
+        <MappingFragment StoreEntitySet="TypeOfTechnic">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Technic">
+      <EntityTypeMapping TypeName="DatabaseModel.Technic">
+        <MappingFragment StoreEntitySet="Technic">
+          <ScalarProperty Name="IdType" ColumnName="IdType" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryRental">
+      <EntityTypeMapping TypeName="DatabaseModel.HistoryRental">
+        <MappingFragment StoreEntitySet="HistoryRental">
+          <ScalarProperty Name="DateEnt" ColumnName="DateEnt" />
+          <ScalarProperty Name="DataStart" ColumnName="DataStart" />
+          <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

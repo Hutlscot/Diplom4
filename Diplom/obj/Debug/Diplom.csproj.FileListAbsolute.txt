@@ -66,3 +66,11 @@ D:\123\Diplom\obj\Debug\View\AllPropertyPage.g.cs
 D:\123\Diplom\obj\Debug\View\AllPropertyPage.baml
 D:\123\Diplom\obj\Debug\View\HistoryRentalPage.g.cs
 D:\123\Diplom\obj\Debug\View\HistoryRentalPage.baml
+D:\123\Diplom\obj\Debug\View\AddClientPage.g.cs
+D:\123\Diplom\obj\Debug\View\AddClientPage.baml
+D:\123\Diplom\bin\Debug\MaterialDesignColors.dll
+D:\123\Diplom\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\123\Diplom\bin\Debug\MaterialDesignColors.pdb
+D:\123\Diplom\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\123\Diplom\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\123\Diplom\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

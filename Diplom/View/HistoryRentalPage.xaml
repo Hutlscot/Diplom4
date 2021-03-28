@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Diplom.VM"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="История аренды" Style="{StaticResource StylePage}">
+      Title="История аренды" Style="{StaticResource Page}">
 
     <Page.DataContext>
         <local:ClientsVM></local:ClientsVM>
@@ -28,10 +28,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" 
+            <Button HorizontalAlignment="Center"  Margin="5" Width="150"
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавить запись" Content="Добавить запись"></Button>
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right" 
+            <Button HorizontalAlignment="Right" Margin="5" Width="150"
                     Command="{Binding DelCommand}">Удалить запись</Button>
         </Grid>
     </Grid>

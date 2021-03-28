@@ -4,29 +4,42 @@
              xmlns:local="clr-namespace:Diplom"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Page" x:Key="StylePage">
-            <Setter Property="Background" Value="White"></Setter>
-            <Setter Property="FontSize" Value="16"></Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Indigo.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Style TargetType="Window" x:Key="Window">
+                <Setter Property="Background" Value="#656c72"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="ResizeMode" Value="NoResize"></Setter>
+            </Style>
 
-        <Style TargetType="Window" x:Key="StyleWindow">
-            <Setter Property="Background" Value="White"></Setter>
-            <Setter Property="FontSize" Value="16"></Setter>
-        </Style>
+            <Style TargetType="Page" x:Key="Page">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background" Value="#484848"></Setter>
+                <Setter Property="FontSize" Value="15"></Setter>
+            </Style>
 
-        <Style TargetType="TextBlock" x:Key="TextCenter">
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-        </Style>
-        <Style TargetType="Button" x:Key="DefaultButton">
-            <Setter Property="Width" Value="150"></Setter>
-            <Setter Property="Height" Value="30"></Setter>
-            <Setter Property="FontSize" Value="13"></Setter>
-            <Setter Property="Margin" Value="4"></Setter>
-        </Style>
+            <Style TargetType="TextBlock" x:Key="TextCenter">
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="DefaultButton">
+                <Setter Property="Width" Value="150"></Setter>
+                <Setter Property="Height" Value="30"></Setter>
+                <Setter Property="FontSize" Value="13"></Setter>
+                <Setter Property="Margin" Value="4"></Setter>
+            </Style>
 
-        <Style TargetType="TextBox" x:Key="DefaultTextBox">
-            <Setter Property="Margin" Value="5"></Setter>
-        </Style>
+            <Style TargetType="TextBox" x:Key="DefaultTextBox">
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
+    
 </Application>

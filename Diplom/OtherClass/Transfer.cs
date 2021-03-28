@@ -42,6 +42,11 @@ namespace Diplom.OtherClasses
                         frame.Navigate(new HomesPage());
                         break;
                     }
+                case "Добавить клиента":
+                    {
+                        frame.Navigate(new AddClientPage());
+                        break;
+                    }
                 default:
                     {
                         MessageBox.Show("not fount");

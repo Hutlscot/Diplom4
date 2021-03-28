@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Diplom.VM"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Клиенты" Style="{StaticResource StylePage}">
+      Title="Клиенты" Style="{StaticResource Page}">
     <Page.DataContext>
         <local:ClientsVM></local:ClientsVM>
     </Page.DataContext>
@@ -27,10 +27,10 @@
                 </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" 
+            <Button Margin="5" HorizontalAlignment="Center" 
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавить клиента" Content="Добавить клиента"></Button>
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right" 
+            <Button Margin="5" HorizontalAlignment="Right" 
                     Command="{Binding DelCommand}">Удалить клиента</Button>
         </Grid>
     </Grid>

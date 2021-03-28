@@ -1,0 +1,25 @@
+﻿<Page x:Class="Diplom.View.AddClientPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom.VM"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавление клиента" Style="{StaticResource Page}">
+
+    <Page.DataContext>
+        <local:AddClientVM></local:AddClientVM>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel Width="300" Margin="10" Orientation="Vertical">
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Фамилия" Text="{Binding addedItem.LastName}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Имя" Text="{Binding addedItem.Name}"  materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Отчество" Text="{Binding addedItem.MiddleName}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Телефон" Text="{Binding addedItem.Phone}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+
+            <Button Width="150" Command="{Binding AddCommand}">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Page>
