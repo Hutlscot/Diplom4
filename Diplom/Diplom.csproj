@@ -113,6 +113,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\PropertyPart.cs" />
     <Compile Include="OtherClass\Info.cs" />
     <Compile Include="Property.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -135,8 +136,8 @@
     <Compile Include="View\AddTechnicPage.xaml.cs">
       <DependentUpon>AddTechnicPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AllPropertyPage.xaml.cs">
-      <DependentUpon>AllPropertyPage.xaml</DependentUpon>
+    <Compile Include="View\PropertyPage.xaml.cs">
+      <DependentUpon>PropertyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
@@ -156,6 +157,7 @@
     <Compile Include="VM\ClientsVM.cs" />
     <Compile Include="VM\HomesPageVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
+    <Compile Include="VM\PropertyVM.cs" />
     <Compile Include="VM\TechnicVM.cs" />
     <Page Include="View\AddClientPage.xaml">
       <SubType>Designer</SubType>
@@ -169,7 +171,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AllPropertyPage.xaml">
+    <Page Include="View\PropertyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,9 +240,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

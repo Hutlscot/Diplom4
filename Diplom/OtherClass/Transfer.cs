@@ -24,7 +24,7 @@ namespace Diplom.OtherClass
                     }
                 case "Всё имущество":
                     {
-                        frame.Navigate(new AllPropertyPage());
+                        frame.Navigate(new PropertyPage());
                         break;
                     }
                 case "Техника":

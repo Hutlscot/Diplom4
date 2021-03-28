@@ -62,8 +62,6 @@ D:\123\Diplom\obj\Debug\Diplom.csproj.CoreCompileInputs.cache
 D:\123\Diplom\obj\Debug\Diplom.csproj.CopyComplete
 D:\123\Diplom\obj\Debug\Diplom.exe
 D:\123\Diplom\obj\Debug\Diplom.pdb
-D:\123\Diplom\obj\Debug\View\AllPropertyPage.g.cs
-D:\123\Diplom\obj\Debug\View\AllPropertyPage.baml
 D:\123\Diplom\obj\Debug\View\HistoryRentalPage.g.cs
 D:\123\Diplom\obj\Debug\View\HistoryRentalPage.baml
 D:\123\Diplom\obj\Debug\View\AddClientPage.g.cs
@@ -78,3 +76,5 @@ D:\123\Diplom\obj\Debug\View\AddTechnicPage.g.cs
 D:\123\Diplom\obj\Debug\View\AddTechnicPage.baml
 D:\123\Diplom\obj\Debug\View\AddHomePage.g.cs
 D:\123\Diplom\obj\Debug\View\AddHomePage.baml
+D:\123\Diplom\obj\Debug\View\PropertyPage.g.cs
+D:\123\Diplom\obj\Debug\View\PropertyPage.baml
