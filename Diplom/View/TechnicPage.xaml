@@ -22,7 +22,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название" Binding="{Binding Property.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Стоимость/час" Binding="{Binding Property.Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость аренды" Binding="{Binding Property.Price}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Модель" Binding="{Binding Model}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Тип техники" Binding="{Binding TypeOfTechnic.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Описание" Binding="{Binding Property.Description}"></DataGridTextColumn>

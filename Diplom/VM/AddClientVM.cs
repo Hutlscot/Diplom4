@@ -1,5 +1,4 @@
 ﻿using Diplom.OtherClass;
-using Diplom.OtherClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;

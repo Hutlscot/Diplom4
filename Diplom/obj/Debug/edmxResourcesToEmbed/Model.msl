@@ -22,16 +22,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Property">
-      <EntityTypeMapping TypeName="DatabaseModel.Property">
-        <MappingFragment StoreEntitySet="Property">
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TypeOfHome">
       <EntityTypeMapping TypeName="DatabaseModel.TypeOfHome">
         <MappingFragment StoreEntitySet="TypeOfHome">
@@ -64,6 +54,16 @@
           <ScalarProperty Name="DataStart" ColumnName="DataStart" />
           <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
           <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Property">
+      <EntityTypeMapping TypeName="DatabaseModel.Property">
+        <MappingFragment StoreEntitySet="Property">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

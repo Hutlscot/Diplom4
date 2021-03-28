@@ -40,7 +40,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Technic">
@@ -185,22 +185,13 @@
         <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="DatabaseModel.Clients" />
           <EntitySet Name="Homes" EntityType="DatabaseModel.Homes" />
-          <EntitySet Name="Property" EntityType="DatabaseModel.Property" />
           <EntitySet Name="TypeOfHome" EntityType="DatabaseModel.TypeOfHome" />
           <EntitySet Name="TypeOfTechnic" EntityType="DatabaseModel.TypeOfTechnic" />
-          <AssociationSet Name="FK_Homes_ToProperty" Association="DatabaseModel.FK_Homes_ToProperty">
-            <End Role="Property" EntitySet="Property" />
-            <End Role="Homes" EntitySet="Homes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Homes_ToTypeOfHome" Association="DatabaseModel.FK_Homes_ToTypeOfHome">
             <End Role="TypeOfHome" EntitySet="TypeOfHome" />
             <End Role="Homes" EntitySet="Homes" />
           </AssociationSet>
           <EntitySet Name="Technic" EntityType="DatabaseModel.Technic" />
-          <AssociationSet Name="FK_Technic_ToProperty" Association="DatabaseModel.FK_Technic_ToProperty">
-            <End Role="Property" EntitySet="Property" />
-            <End Role="Technic" EntitySet="Technic" />
-          </AssociationSet>
           <AssociationSet Name="FK_Technic_ToTypeOfTech" Association="DatabaseModel.FK_Technic_ToTypeOfTech">
             <End Role="TypeOfTechnic" EntitySet="TypeOfTechnic" />
             <End Role="Technic" EntitySet="Technic" />
@@ -210,9 +201,18 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="HistoryRental" EntitySet="HistoryRental" />
           </AssociationSet>
+          <EntitySet Name="Property" EntityType="DatabaseModel.Property" />
           <AssociationSet Name="FK_HistoryRental_ToProperty" Association="DatabaseModel.FK_HistoryRental_ToProperty">
             <End Role="Property" EntitySet="Property" />
             <End Role="HistoryRental" EntitySet="HistoryRental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Homes_ToProperty" Association="DatabaseModel.FK_Homes_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Homes" EntitySet="Homes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Technic_ToProperty" Association="DatabaseModel.FK_Technic_ToProperty">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="Technic" EntitySet="Technic" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Clients">
@@ -234,20 +234,8 @@
           <Property Name="AmountPeople" Type="Int32" Nullable="false" />
           <Property Name="Square" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Homes" ToRole="Property" />
           <NavigationProperty Name="TypeOfHome" Relationship="DatabaseModel.FK_Homes_ToTypeOfHome" FromRole="Homes" ToRole="TypeOfHome" />
-        </EntityType>
-        <EntityType Name="Property">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Homes" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Property" ToRole="Homes" />
-          <NavigationProperty Name="Technic" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Property" ToRole="Technic" />
-          <NavigationProperty Name="HistoryRental" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="Property" ToRole="HistoryRental" />
+          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Homes" ToRole="Property" />
         </EntityType>
         <EntityType Name="TypeOfHome">
           <Key>
@@ -265,20 +253,6 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Technic" Relationship="DatabaseModel.FK_Technic_ToTypeOfTech" FromRole="TypeOfTechnic" ToRole="Technic" />
         </EntityType>
-        <Association Name="FK_Homes_ToProperty">
-          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DatabaseModel.Homes" Role="Homes" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Property">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Homes">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Homes_ToTypeOfHome">
           <End Type="DatabaseModel.TypeOfHome" Role="TypeOfHome" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -300,23 +274,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Technic" ToRole="Property" />
           <NavigationProperty Name="TypeOfTechnic" Relationship="DatabaseModel.FK_Technic_ToTypeOfTech" FromRole="Technic" ToRole="TypeOfTechnic" />
+          <NavigationProperty Name="Property" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Technic" ToRole="Property" />
         </EntityType>
-        <Association Name="FK_Technic_ToProperty">
-          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DatabaseModel.Technic" Role="Technic" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Property">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Technic">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Technic_ToTypeOfTech">
           <End Type="DatabaseModel.TypeOfTechnic" Role="TypeOfTechnic" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -355,6 +315,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HistoryRental" Relationship="DatabaseModel.FK_HistoryRental_ToProperty" FromRole="Property" ToRole="HistoryRental" />
+          <NavigationProperty Name="Homes" Relationship="DatabaseModel.FK_Homes_ToProperty" FromRole="Property" ToRole="Homes" />
+          <NavigationProperty Name="Technic" Relationship="DatabaseModel.FK_Technic_ToProperty" FromRole="Property" ToRole="Technic" />
+        </EntityType>
         <Association Name="FK_HistoryRental_ToProperty">
           <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1" />
           <End Type="DatabaseModel.HistoryRental" Role="HistoryRental" Multiplicity="*" />
@@ -364,6 +336,34 @@
             </Principal>
             <Dependent Role="HistoryRental">
               <PropertyRef Name="IdProperty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Homes_ToProperty">
+          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.Homes" Role="Homes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Homes">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Technic_ToProperty">
+          <End Type="DatabaseModel.Property" Role="Property" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.Technic" Role="Technic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Technic">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -390,16 +390,6 @@
                 <ScalarProperty Name="IdType" ColumnName="IdType" />
                 <ScalarProperty Name="Square" ColumnName="Square" />
                 <ScalarProperty Name="AmountPeople" ColumnName="AmountPeople" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Property">
-            <EntityTypeMapping TypeName="DatabaseModel.Property">
-              <MappingFragment StoreEntitySet="Property">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -436,6 +426,16 @@
                 <ScalarProperty Name="DataStart" ColumnName="DataStart" />
                 <ScalarProperty Name="IdProperty" ColumnName="IdProperty" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property">
+            <EntityTypeMapping TypeName="DatabaseModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

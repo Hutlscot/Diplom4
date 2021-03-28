@@ -27,10 +27,10 @@ namespace Diplom
     
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Homes> Homes { get; set; }
-        public virtual DbSet<Property> Property { get; set; }
         public virtual DbSet<TypeOfHome> TypeOfHome { get; set; }
         public virtual DbSet<TypeOfTechnic> TypeOfTechnic { get; set; }
         public virtual DbSet<Technic> Technic { get; set; }
         public virtual DbSet<HistoryRental> HistoryRental { get; set; }
+        public virtual DbSet<Property> Property { get; set; }
     }
 }

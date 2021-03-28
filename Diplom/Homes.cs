@@ -19,7 +19,7 @@ namespace Diplom
         public string Square { get; set; }
         public int IdType { get; set; }
     
-        public virtual Property Property { get; set; }
         public virtual TypeOfHome TypeOfHome { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

@@ -1,0 +1,37 @@
+﻿<Page x:Class="Diplom.View.AddHomePage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom.VM"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавление жилого помещения" Style="{StaticResource Page}">
+
+    <Page.DataContext>
+        <local:AddHomeVM></local:AddHomeVM>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel Width="300" Margin="10" Orientation="Vertical">
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Название" Text="{Binding addedProterty.Name}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Стоимость аренды" Text="{Binding addedProterty.Price}"  materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Описание" Text="{Binding addedProterty.Description}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="5">Макс. человек</TextBlock>
+                <TextBox Margin="5" Width="179" materialDesign:HintAssist.Hint="кол-во мест" Text="{Binding addedItem.AmountPeople}"  materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            </StackPanel>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Площать м²" Text="{Binding addedItem.Square}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
+            <ComboBox materialDesign:HintAssist.Hint="Тип жилого помещения" ItemsSource="{Binding typeList}"
+                      Margin="5" SelectedItem="{Binding selectedType}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button Width="150" Command="{Binding AddCommand}">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Diplom.OtherClasses
+namespace Diplom.OtherClass
 {
     public static class Trans
     {
@@ -50,6 +50,11 @@ namespace Diplom.OtherClasses
                 case "Добавить технику":
                     {
                         frame.Navigate(new AddTechnicPage());
+                        break;
+                    }
+                case "Добавить помещение":
+                    {
+                        frame.Navigate(new AddHomePage());
                         break;
                     }
                 default:

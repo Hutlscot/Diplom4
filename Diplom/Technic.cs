@@ -18,7 +18,7 @@ namespace Diplom
         public string Model { get; set; }
         public int IdType { get; set; }
     
-        public virtual Property Property { get; set; }
         public virtual TypeOfTechnic TypeOfTechnic { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

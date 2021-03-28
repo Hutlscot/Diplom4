@@ -129,6 +129,9 @@
     <Compile Include="View\AddClientPage.xaml.cs">
       <DependentUpon>AddClientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddHomePage.xaml.cs">
+      <DependentUpon>AddHomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddTechnicPage.xaml.cs">
       <DependentUpon>AddTechnicPage.xaml</DependentUpon>
     </Compile>
@@ -148,11 +151,17 @@
       <DependentUpon>TechnicPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="VM\AddClientVM.cs" />
+    <Compile Include="VM\AddHomeVM.cs" />
     <Compile Include="VM\AddTechnicVM.cs" />
     <Compile Include="VM\ClientsVM.cs" />
+    <Compile Include="VM\HomesPageVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
     <Compile Include="VM\TechnicVM.cs" />
     <Page Include="View\AddClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

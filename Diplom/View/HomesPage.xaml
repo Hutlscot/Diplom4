@@ -9,7 +9,7 @@
       Title="Жилые помещения" Style="{StaticResource Page}">
 
     <Page.DataContext>
-        <local:ClientsVM></local:ClientsVM>
+        <local:HomesPageVM></local:HomesPageVM>
     </Page.DataContext>
 
     <Grid>
@@ -21,12 +21,12 @@
                   SelectedItem="{Binding selectedItem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Название" Binding="{Binding LastName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Стоимость/сутки" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кол-во чел." Binding="{Binding MiddleName}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Площать" Binding="{Binding Phone}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Phone}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Тип дома" Binding="{Binding Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding Property.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость аренды" Binding="{Binding Property.Price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кол-во чел." Binding="{Binding AmountPeople}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Площать" Binding="{Binding Square}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Описание" Binding="{Binding Property.Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип дома" Binding="{Binding TypeOfHome.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">

@@ -76,3 +76,5 @@ D:\123\Diplom\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\123\Diplom\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 D:\123\Diplom\obj\Debug\View\AddTechnicPage.g.cs
 D:\123\Diplom\obj\Debug\View\AddTechnicPage.baml
+D:\123\Diplom\obj\Debug\View\AddHomePage.g.cs
+D:\123\Diplom\obj\Debug\View\AddHomePage.baml

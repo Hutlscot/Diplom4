@@ -15,10 +15,7 @@
     <Grid>
         <StackPanel Width="300" Margin="10" Orientation="Vertical">
             <TextBox Margin="5" materialDesign:HintAssist.Hint="Название" Text="{Binding addedProterty.Name}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Margin="5">Стоимость/час</TextBlock>
-                <TextBox Margin="5" Width="179" materialDesign:HintAssist.Hint="руб/час" Text="{Binding addedProterty.Price}"  materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
-            </StackPanel>
+            <TextBox Margin="5" materialDesign:HintAssist.Hint="Стоимость аренды" Text="{Binding addedProterty.Price}"  materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
             <TextBox Margin="5" materialDesign:HintAssist.Hint="Описание" Text="{Binding addedProterty.Description}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
             <TextBox Margin="5" materialDesign:HintAssist.Hint="Модель" Text="{Binding addedItem.Model}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
             <ComboBox materialDesign:HintAssist.Hint="Тип техники" ItemsSource="{Binding typeList}"

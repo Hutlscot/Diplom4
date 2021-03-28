@@ -1,4 +1,4 @@
-﻿using Diplom.OtherClasses;
+﻿using Diplom.OtherClass;
 using Diplom.View;
 using System;
 using System.Collections.Generic;
