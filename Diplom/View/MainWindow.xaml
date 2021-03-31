@@ -8,7 +8,7 @@
         xmlns:lk="clr-namespace:Diplom.VM"
         
         mc:Ignorable="d"
-       Title="Главное окно" Height="550" Width="1000" Style="{StaticResource Window}" ResizeMode="NoResize" 
+       Title="Главное окно" Height="550" Width="1200" Style="{StaticResource Window}" 
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <lk:MainWindowVM></lk:MainWindowVM>
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="55"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 

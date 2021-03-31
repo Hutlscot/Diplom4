@@ -8,6 +8,8 @@ using System.Windows;
 
 namespace Diplom.VM
 {
+    using Diplom.View;
+
     class ClientsVM
     {
         public List<Clients> listItem { get; set; }
@@ -46,6 +48,28 @@ namespace Diplom.VM
                             conn.Clients.Remove(conn.Clients.Find(selectedItem.Id));
                             conn.SaveChanges();
                             Info.Suc();
+                            Trans.Go("Клиенты");
+                        }
+                        catch (Exception e)
+                        {
+                            Info.Err(e);
+                        }
+
+                    }));
+            }
+        }
+        private RelayCommand changeCommand;
+        public RelayCommand ChangeCommand
+        {
+            get
+            {
+                return changeCommand ?? (new RelayCommand(
+                    obj =>
+                    {
+                        try
+                        {
+                            var wind = new ChangeClientWind(selectedItem.Id);
+                            wind.ShowDialog();
                             Trans.Go("Клиенты");
                         }
                         catch (Exception e)

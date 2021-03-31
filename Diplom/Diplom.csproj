@@ -141,6 +141,9 @@
     <Compile Include="View\AddTechnicPage.xaml.cs">
       <DependentUpon>AddTechnicPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChangeClientWind.xaml.cs">
+      <DependentUpon>ChangeClientWind.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PropertyPage.xaml.cs">
       <DependentUpon>PropertyPage.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddTechnicPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChangeClientWind.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

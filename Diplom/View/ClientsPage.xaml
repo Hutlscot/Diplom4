@@ -32,6 +32,8 @@
                     CommandParameter="Добавить клиента" Content="Добавить клиента"></Button>
             <Button Margin="5" HorizontalAlignment="Right" 
                     Command="{Binding DelCommand}">Удалить клиента</Button>
+            <Button Margin="5" HorizontalAlignment="Left" 
+                    Command="{Binding ChangeCommand}">Редактировать клиента</Button>
         </Grid>
     </Grid>
 </Page>
