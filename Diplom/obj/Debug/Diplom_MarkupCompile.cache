@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\man\Diplom\obj\Debug\
+D:\semen\Diplom\obj\Debug\
 Diplom
 none
 false
 DEBUG;TRACE
-D:\man\Diplom\App.xaml
+D:\semen\Diplom\App.xaml
 1458871897
 41432446814
 45-2123871591
-20-1459532263
+20398861266
 View\AddClientPage.xaml;View\AddHistoryRentalPage.xaml;View\AddHomePage.xaml;View\AddTechnicPage.xaml;View\ChangeHistoryWind.xaml;View\ChangeHomeWind.xaml;View\ChangeClientWind.xaml;View\ChangeTechnicWind.xaml;View\PropertyPage.xaml;View\ClientsPage.xaml;View\HistoryRentalPage.xaml;View\HomesPage.xaml;View\MainWindow.xaml;View\TechnicPage.xaml;
 
 False

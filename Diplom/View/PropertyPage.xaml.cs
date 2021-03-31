@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diplom.OtherClass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace Diplom.View
         public PropertyPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var conn = new ConnectionDB())
+                {
+                    MessageBox.Show("Список обновлен, связь с базой данных восстановлена", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception eee)
+            {
+                Info.Err(eee);
+            }
         }
     }
 }
