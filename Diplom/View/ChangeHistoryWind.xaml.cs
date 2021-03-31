@@ -20,15 +20,17 @@ namespace Diplom.View
             DataContext = history;
             cmb1.ItemsSource = conn.Clients.ToList();
             cmb2.ItemsSource = conn.Property.ToList();
-            //timeStart.SelectedTime = history.TimeStart;
-
+            timeStart.SelectedTime = history.TimeStart.ConvertToDateTime();
+            timeEnd.SelectedTime = history.TimeEnd.ConvertToDateTime();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var x = timeStart.SelectedTime;
+                var histoty = (DataContext as HistoryRental);
+                histoty.TimeStart = timeStart.SelectedTime.GetValueOrDefault().ConvertToTimeSpan();
+                histoty.TimeEnd = timeEnd.SelectedTime.GetValueOrDefault().ConvertToTimeSpan();
                 conn.SaveChanges();
                 Info.Suc();
                 Close();

@@ -116,6 +116,7 @@
     <Compile Include="Model\ClientPart.cs" />
     <Compile Include="Model\HistoryPart.cs" />
     <Compile Include="Model\PropertyPart.cs" />
+    <Compile Include="OtherClass\Converter.cs" />
     <Compile Include="OtherClass\Info.cs" />
     <Compile Include="Property.cs">
       <DependentUpon>Model.tt</DependentUpon>

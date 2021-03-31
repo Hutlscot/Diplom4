@@ -42,8 +42,8 @@ namespace Diplom.VM
                        
                         addedItem.IdClient = selectedClient.Id;
                         addedItem.IdProperty = selectedProperty.Id;
-                        addedItem.TimeStart = GetDateStart();
-                        addedItem.TimeEnd = GetDateEnd();
+                        addedItem.TimeStart = timeStart.ConvertToTimeSpan();
+                        addedItem.TimeEnd = timeEnd.ConvertToTimeSpan();
                         conn.HistoryRental.Add(addedItem);
                         conn.SaveChanges();
 
@@ -57,14 +57,6 @@ namespace Diplom.VM
 
                 }));
             }
-        }
-        public TimeSpan GetDateStart()
-        {
-            return new TimeSpan(timeStart.Hour, timeStart.Minute, timeStart.Second);
-        }
-        public TimeSpan GetDateEnd()
-        {
-            return new TimeSpan(timeEnd.Hour, timeEnd.Minute, timeEnd.Second);
         }
     }
 }

@@ -1,7 +1,17 @@
-﻿D:\123\Diplom\obj\Release\GeneratedInternalTypeHelper.g.cs
-FD:\123\Diplom\App.xaml;;
-FD:\123\Diplom\View\ClientsPage.xaml;;
-FD:\123\Diplom\View\HomesPage.xaml;;
-FD:\123\Diplom\View\MainWindow.xaml;;
-FD:\123\Diplom\View\TechnicPage.xaml;;
+﻿
+FD:\man\Diplom\App.xaml;;
+FD:\man\Diplom\View\AddClientPage.xaml;;
+FD:\man\Diplom\View\AddHistoryRentalPage.xaml;;
+FD:\man\Diplom\View\AddHomePage.xaml;;
+FD:\man\Diplom\View\AddTechnicPage.xaml;;
+FD:\man\Diplom\View\ChangeHistoryWind.xaml;;
+FD:\man\Diplom\View\ChangeHomeWind.xaml;;
+FD:\man\Diplom\View\ChangeClientWind.xaml;;
+FD:\man\Diplom\View\ChangeTechnicWind.xaml;;
+FD:\man\Diplom\View\PropertyPage.xaml;;
+FD:\man\Diplom\View\ClientsPage.xaml;;
+FD:\man\Diplom\View\HistoryRentalPage.xaml;;
+FD:\man\Diplom\View\HomesPage.xaml;;
+FD:\man\Diplom\View\MainWindow.xaml;;
+FD:\man\Diplom\View\TechnicPage.xaml;;
 

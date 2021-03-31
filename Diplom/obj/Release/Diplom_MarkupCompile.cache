@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\123\Diplom\obj\Release\
+D:\man\Diplom\obj\Release\
 Diplom
 none
 false
 TRACE
-D:\123\Diplom\App.xaml
-4-556390655
+D:\man\Diplom\App.xaml
+1458871897
 41432446814
-16-170994594
-18-503567273
-View\ClientsPage.xaml;View\HomesPage.xaml;View\MainWindow.xaml;View\TechnicPage.xaml;
+45-2123871591
+20-1459532263
+View\AddClientPage.xaml;View\AddHistoryRentalPage.xaml;View\AddHomePage.xaml;View\AddTechnicPage.xaml;View\ChangeHistoryWind.xaml;View\ChangeHomeWind.xaml;View\ChangeClientWind.xaml;View\ChangeTechnicWind.xaml;View\PropertyPage.xaml;View\ClientsPage.xaml;View\HistoryRentalPage.xaml;View\HomesPage.xaml;View\MainWindow.xaml;View\TechnicPage.xaml;
 
 True
 
