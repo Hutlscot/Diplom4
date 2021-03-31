@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Diplom.VM
 {
+    using Diplom.View;
+
     class HistotyRentalVM
     {
         public List<HistoryRental> listItem { get; set; }
@@ -45,6 +47,29 @@ namespace Diplom.VM
                             conn.HistoryRental.Remove(conn.HistoryRental.Find(selectedItem.Id));
                             conn.SaveChanges();
                             Info.Suc();
+                            Trans.Go("История аренды");
+                        }
+                        catch (Exception e)
+                        {
+                            Info.Err(e);
+                        }
+
+                    }));
+            }
+        }
+
+        private RelayCommand changeCommand;
+        public RelayCommand ChangeCommand
+        {
+            get
+            {
+                return changeCommand ?? (new RelayCommand(
+                    obj =>
+                    {
+                        try
+                        {
+                            var wind = new ChangeHistoryWind(selectedItem.Id);
+                            wind.ShowDialog();
                             Trans.Go("История аренды");
                         }
                         catch (Exception e)

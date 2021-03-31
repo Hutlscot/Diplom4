@@ -19,7 +19,7 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <DataGrid Name="data_grid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding listItem}"
-                  SelectedItem="{Binding selectedItem}">
+                  SelectedItem="{Binding selectedItem}" Grid.ColumnSpan="4">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Клиент" Binding="{Binding Clients.Info}"></DataGridTextColumn>
@@ -31,14 +31,23 @@
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button HorizontalAlignment="Left"  Margin="5" Width="150"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Button HorizontalAlignment="Left" Grid.Column="0"  Margin="5" Width="145"
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавить запись" Content="Добавить запись"></Button>
-            <Button HorizontalAlignment="Center" Margin="5" Width="150"
+            <Button HorizontalAlignment="Left" Grid.Column="1" Margin="5" Width="145"
+                    Command="{Binding ChangeCommand}"
+                    Content="Изменить запись"></Button>
+            <Button HorizontalAlignment="Center" Margin="5" Grid.Column="2" Width="140"
                     Command="{Binding DelCommand}">Удалить запись</Button>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="5" VerticalAlignment="Center" Grid.Column="3">
                 <TextBlock VerticalAlignment="Center" Margin="5">Поиск</TextBlock>
-            <TextBox Margin="5" materialDesign:HintAssist.Hint="Введите название имущества" Width="220" TextChanged="TextBox_TextChanged"
+                <TextBox Margin="5" materialDesign:HintAssist.Hint="Введите название имущества" Width="220" TextChanged="TextBox_TextChanged"
                      Text="{Binding addedItem.LastName}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>
             </StackPanel>
         </Grid>
