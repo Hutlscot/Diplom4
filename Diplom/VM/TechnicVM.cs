@@ -8,6 +8,8 @@ using System.Windows;
 
 namespace Diplom.VM
 {
+    using Diplom.View;
+
     class TechnicVM
     {
         public List<Technic> listItem { get; set; }
@@ -46,6 +48,29 @@ namespace Diplom.VM
                             conn.Technic.Remove(conn.Technic.Find(selectedItem.Id));
                             conn.SaveChanges();
                             Info.Suc();
+                            Trans.Go("Техника");
+                        }
+                        catch (Exception e)
+                        {
+                            Info.Err(e);
+                        }
+
+                    }));
+            }
+        }
+
+        private RelayCommand changeCommand;
+        public RelayCommand ChangeCommand
+        {
+            get
+            {
+                return changeCommand ?? (new RelayCommand(
+                    obj =>
+                    {
+                        try
+                        {
+                            var wind = new ChangeTechnicWind(selectedItem.Id);
+                            wind.ShowDialog();
                             Trans.Go("Техника");
                         }
                         catch (Exception e)

@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Diplom.VM"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Редактирование клиента" Height="450" Width="500" Style="{StaticResource Window}">
+        Title="Редактирование жилого помещения" Height="450" Width="500" Style="{StaticResource Window}">
     <Grid>
         <StackPanel Width="300" Margin="10" Orientation="Vertical">
             <TextBox Margin="5" materialDesign:HintAssist.Hint="Название" Text="{Binding Property.Name}" materialDesign:TextFieldAssist.HasClearButton="True" ></TextBox>

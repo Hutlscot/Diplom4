@@ -134,3 +134,5 @@ C:\Users\VorontsovRD\Desktop\dip\Diplom4\Diplom\obj\Debug\View\ChangeClientWind.
 C:\Users\VorontsovRD\Desktop\dip\Diplom4\Diplom\obj\Debug\View\ChangeClientWind.baml
 C:\Users\VorontsovRD\Desktop\dip\Diplom4\Diplom\obj\Debug\View\ChangeHomeWind.g.cs
 C:\Users\VorontsovRD\Desktop\dip\Diplom4\Diplom\obj\Debug\View\ChangeHomeWind.baml
+C:\Users\VorontsovRD\Desktop\dip\Diplom4\Diplom\obj\Debug\View\ChangeTechnicWind.g.cs
+C:\Users\VorontsovRD\Desktop\dip\Diplom4\Diplom\obj\Debug\View\ChangeTechnicWind.baml
