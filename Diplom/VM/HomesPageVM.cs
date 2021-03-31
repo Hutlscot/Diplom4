@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Diplom.VM
 {
+    using Diplom.View;
+
     class HomesPageVM
     {
         public List<Homes> listItem { get; set; }
@@ -45,6 +47,29 @@ namespace Diplom.VM
                             conn.Homes.Remove(conn.Homes.Find(selectedItem.Id));
                             conn.SaveChanges();
                             Info.Suc();
+                            Trans.Go("Жилые помещения");
+                        }
+                        catch (Exception e)
+                        {
+                            Info.Err(e);
+                        }
+
+                    }));
+            }
+        }
+
+        private RelayCommand changeCommand;
+        public RelayCommand ChangeCommand
+        {
+            get
+            {
+                return changeCommand ?? (new RelayCommand(
+                    obj =>
+                    {
+                        try
+                        {
+                            var wind = new ChangeHomeWind(selectedItem.Id);
+                            wind.ShowDialog();
                             Trans.Go("Жилые помещения");
                         }
                         catch (Exception e)

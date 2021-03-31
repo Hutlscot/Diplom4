@@ -35,6 +35,8 @@
                     CommandParameter="Добавить помещение" Content="Добавить помещение"></Button>
             <Button HorizontalAlignment="Right" Margin="5"
                     Command="{Binding DelCommand}">Удалить помещение</Button>
+            <Button HorizontalAlignment="Left" Margin="5"
+                    Command="{Binding ChangeCommand}">Редактировать помещение</Button>
         </Grid>
     </Grid>
 </Page>
